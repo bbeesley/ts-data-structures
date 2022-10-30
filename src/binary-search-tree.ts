@@ -49,6 +49,38 @@ export class BinarySearchTree<T> {
     }
   }
 
+  public remove(valueToRemove: T): void {
+    const removeNode = (
+      node: BSTNode<T> | null,
+      value: T,
+    ): BSTNode<T> | null => {
+      if (node) {
+        /* eslint-disable no-param-reassign */
+        if (value < node.data) {
+          node.left = removeNode(node.left, value);
+          return node;
+        }
+        if (value > node.data) {
+          node.right = removeNode(node.right, value);
+          return node;
+        }
+        if (node.left === null && node.right === null) return null;
+        if (node.left === null) return node.right;
+        if (node.right === null) return node.left;
+        let replacement = node.right;
+        while (replacement.left !== null) {
+          replacement = replacement.left;
+        }
+        node.data = replacement.data;
+        node.right = removeNode(node.right, replacement.data);
+        /* eslint-enable no-param-reassign */
+        return node;
+      }
+      return null;
+    };
+    this.root = removeNode(this.root, valueToRemove);
+  }
+
   public findMinHeight(
     node: BSTNode<T> | null = this.root,
     height = -1,
@@ -86,6 +118,12 @@ export class BinarySearchTree<T> {
     };
     inOrderTraverse(this.root);
     return results;
+  }
+
+  public find(value: T, node: BSTNode<T> | null = this.root): T | null {
+    if (node === null) return null;
+    if (node.data === value) return node.data;
+    return this.find(value, node.data > value ? node.left : node.right);
   }
 
   public preOrder(): T[] {

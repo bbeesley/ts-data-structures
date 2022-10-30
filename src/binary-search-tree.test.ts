@@ -12,6 +12,25 @@ function createInitialState(values: number[] = state) {
   return bst;
 }
 
+test('find returns an element if present', (t) => {
+  const bst = createInitialState();
+  for (const el of state) {
+    t.is(bst.find(el), el);
+  }
+});
+
+test('find returns null if an element is not present', (t) => {
+  const bst = createInitialState();
+  t.is(bst.find(42), null);
+});
+
+test('remove removes an element from the tree', (t) => {
+  const bst = createInitialState();
+  t.is(bst.find(17), 17);
+  bst.remove(17);
+  t.is(bst.find(17), null);
+});
+
 test('findMinHeight should return the minimum tree height', (t) => {
   const bst = createInitialState();
   t.is(bst.findMinHeight(), 1);
