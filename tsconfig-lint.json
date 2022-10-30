@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "checkJs": false,
+    "strictNullChecks": false,
+    "exactOptionalPropertyTypes": false
+  },
+  "include": [
+    "**/*.ts",
+    "**/.*.ts",
+    "**/*.js",
+    "**/*.mjs",
+    "**/*.cjs",
+    "**/.*.js",
+    "**/.*.mjs",
+    "**/.*.cjs",
+    "*.js",
+    "*.mjs",
+    "*.cjs",
+    ".*.js",
+    ".*.mjs",
+    ".*.cjs",
+    "*.ts",
+    ".*.ts"
+  ],
+  "exclude": ["dist"]
+}
