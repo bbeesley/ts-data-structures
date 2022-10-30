@@ -1,7 +1,7 @@
 export class Stack<T> {
   private content: T[];
 
-  constructor(initialState: Iterable<T> = []) {
+  public constructor(initialState: Iterable<T> = []) {
     this.content = [...initialState];
   }
 

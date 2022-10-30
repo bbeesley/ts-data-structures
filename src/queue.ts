@@ -1,7 +1,7 @@
 export class Queue<T> {
   public content: T[];
 
-  constructor(initialState: Iterable<T> = []) {
+  public constructor(initialState: Iterable<T> = []) {
     this.content = [...initialState];
   }
 
@@ -15,6 +15,10 @@ export class Queue<T> {
 
   public front(): T | undefined {
     return this.content[0];
+  }
+
+  public isEmpty(): boolean {
+    return this.content.length === 0;
   }
 
   public [Symbol.iterator](): IterableIterator<T> {

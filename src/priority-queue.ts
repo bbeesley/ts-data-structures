@@ -6,7 +6,7 @@ export type QueueElement<T> = {
 export class PriorityQueue<T> {
   public content: QueueElement<T>[];
 
-  constructor(initialState: Iterable<T> = []) {
+  public constructor(initialState: Iterable<T> = []) {
     this.content = [...initialState].map((e) => ({ data: e, priority: 1 }));
   }
 
@@ -25,6 +25,10 @@ export class PriorityQueue<T> {
 
   public front(): T | undefined {
     return this.content[0]?.data;
+  }
+
+  public isEmpty(): boolean {
+    return this.content.length === 0;
   }
 
   public [Symbol.iterator](): IterableIterator<T> {

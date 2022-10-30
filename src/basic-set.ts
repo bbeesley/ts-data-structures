@@ -1,7 +1,7 @@
 export class BasicSet<T> {
   public content: T[];
 
-  constructor(initialState: Iterable<T> = []) {
+  public constructor(initialState: Iterable<T> = []) {
     this.content = [];
     for (const element of initialState) {
       if (!this.content.includes(element)) {

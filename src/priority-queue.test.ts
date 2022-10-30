@@ -40,6 +40,20 @@ test('front should should return the first element when the queue has content bu
   t.not(s.front(), state[0]);
 });
 
+test('isEmpty returns true when the queue has no content', (t) => {
+  const s = new PriorityQueue<number>();
+  t.true(s.isEmpty());
+  s.enqueue(1);
+  s.dequeue();
+  t.true(s.isEmpty());
+});
+
+test('isEmpty returns false when the queue no content', (t) => {
+  const s = new PriorityQueue<number>();
+  s.enqueue(1);
+  t.false(s.isEmpty());
+});
+
 test('it should be iterable', (t) => {
   let iteration = 0;
   const s = new PriorityQueue(state);

@@ -292,6 +292,8 @@ const rules = {
   // require specifying the file extension when importing from a different file type
   // this allows babel to replace the filename on imports/exports with the target file extension
   'import/extensions': ['error', 'never', { js: 'always', json: 'always' }],
+
+  'max-classes-per-file': 'off',
 };
 const overrides = [
   {
